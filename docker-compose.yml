@@ -1,0 +1,183 @@
+
+volumes:
+  postgres_data: {}
+  prefect_data: {}
+  grafana_data: {}
+
+networks:
+  front-tier: {}
+  back-tier: {}
+
+services:
+
+  # ------------- Prefect & Prefect Worker servers -------------#
+
+  prefect-worker:
+    container_name: prefect-worker
+    image: flow-image
+    profiles:
+      - app
+      - core
+    environment:
+      - PREFECT_API_URL=http://prefect-server:4200/api
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+        prefect worker start --pool my-docker-pool --type docker
+    networks:
+      - back-tier
+    restart: always
+    depends_on:
+      prefect-server:
+        condition: service_healthy
+
+  prefect-server:
+    container_name: prefect-server
+    image: flow-image
+    profiles:
+      - app
+      - core
+    command: >
+      prefect server start --host 0.0.0.0 --port 4200
+    ports:
+      - "4200:4200"
+    volumes:
+      - prefect_data:/root/.prefect
+    networks:
+      - back-tier
+    restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:4200/api/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # ------------- Mlflow & Model Serving Servers-------------#
+
+
+  mlflow-server:
+    container_name: mlflow-server
+    image: flow-image
+    profiles:
+      - app
+      - core
+    ports:
+      - "5000:5000"
+    command: >  
+      mlflow server
+      --backend-store-uri postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${MLFLOW_DB_NAME}
+      --default-artifact-root ${MLFLOW_ARTIFACT_ROOT}
+      --host 0.0.0.0 
+      --port 5000
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./src:/app/src
+      - ./config:/app/config
+    networks:
+      - back-tier
+    restart: always
+    depends_on:
+       db-server:
+          condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5000" ]
+      interval: 15s
+      timeout: 10s
+      retries: 3
+
+  model-server:
+    container_name: model-server
+    image: flow-image
+    profiles:
+      - app
+      - serving
+    ports:
+      - "8000:8000"
+    environment:
+       ENV_MODE: ${ENV_MODE}
+       MLFLOW_TRACKING_URI : ${MLFLOW_TRACKING_URI}
+       MLFLOW_DB_NAME: ${MLFLOW_DB_NAME}
+       MODEL_URI : models:/wine_quality_dev@champion # ${MODEL_URI}
+       DB_HOST: ${DB_HOST}
+       DB_PORT: ${DB_PORT}
+       DB_USER: ${DB_USER}
+       DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./src:/app/src
+      - ./config:/app/config
+    networks:
+      - back-tier
+    command: >
+      uvicorn src.model_api:app --host 0.0.0.0 --port 8000
+    restart: on-failure:3
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 15s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      mlflow-server:
+        condition: service_healthy
+
+# ------------- Database server -------------#
+  db-server:
+    container_name: db-server
+    image: postgres
+    profiles:
+      - app
+      - core
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    networks:
+      - back-tier
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+# ------------- Grafana & Adminer servers -------------#
+  adminer-server:
+    container_name: adminer-server
+    image: adminer
+    restart: always
+    profiles:
+      - app
+    ports:
+      - "8080:8080"
+    networks:
+      - back-tier
+      - front-tier  
+
+  grafana-server:
+    container_name: grafana-server
+    profiles:
+      - app
+    image: grafana/grafana
+    user: "472"
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./config/grafana_datasources.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+    networks:
+      - back-tier
+      - front-tier
+    environment:
+      MONITORING_DB_NAME: ${MONITORING_DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+
+    restart: always
+
