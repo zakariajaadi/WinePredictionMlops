@@ -41,7 +41,7 @@ https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af
 
 * **🖥️ Adminer**: Adminer provided a light-weight front-end to manage and monitor the PostgreSQL database.  
 
-## ⏳ Dataset
+## 📊  Dataset
 
 This project uses the **Red Wine Quality dataset from the UCI Machine Learning Repository** to predict the quality of red wine based on various chemical properties, such as alcohol content, acidity, and pH, to assist winemakers in assessing and improving their product.
 
@@ -80,6 +80,11 @@ Access the prefect UI (`http://localhost:4200`), navigate to Deployments, and tr
     * **MLflow UI:** `http://localhost:5000` 
     * **Grafana:** `http://localhost:3000` 
     * **Adminer:** `http://localhost:8080` 
-    * **Fast API model serving:** `http://localhost:8000` 
+    * **Fast API model serving:** `http://localhost:8000`
+   
+7. **To stop the services:**
+    ```bash
+    make compose-down #Stops the docker containers.
+    ```
 
 ## You're all set! The application is now running. 🏃
