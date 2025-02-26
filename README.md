@@ -49,43 +49,44 @@ This project uses the **Red Wine Quality dataset from the UCI Machine Learning R
 
 ## 🧙 Model 
 
-* The **Wine Quality Prediction Model** is built using **ElasticNet** regression, a linear regression technique that balances Lasso (L1) and Ridge (L2) regularization.
-* **Hyperopt** is used for hyperparameter tuning to find the best values for `alpha` regularization strength and `l1_ratio` balance between L1 and L2 penalties.
+The **Wine Quality Prediction Model** is built using **ElasticNet** regression, a linear regression technique that balances Lasso (L1) and Ridge (L2) regularization.
+
+**Hyperopt** is used for hyperparameter tuning to find the best values for `alpha` regularization strength and `l1_ratio` balance between L1 and L2 penalties.
 
 ## 🛠️ Installation
 
-To set up the project locally, make sure you have **Make, Docker and Docker Compose pre-installed**, then proceed with the following steps:
+To set up the project locally, make sure you have **Make**, **Docker** and **Docker Compose** pre-installed**, then proceed with the following steps:
 
-1. **Clone the repository:**
+1. Clone the repository:
 
    ```bash
    git clone zakariajaadi/WinePredictionMlops
    cd WinePredictionMlops
    ```
-2. **Build flow image:**
+2. Build flow image:
 
    ```bash
    make build-flow-image # Builds the Docker image for the Prefect flows
    ```
-3. **Run docker containers:**
+3. Run docker containers:
    ```bash
    make compose-up-app # Starts all application containers using Docker Compose.
    ```
-4. **Deploy flows in prefect:**
+4. Deploy flows in prefect:
    ```bash
    make deploy-all-flows # Deploys all Prefect flows to the Prefect server
    ```
-5. **Run flows in prefect UI:**
+5. Run flows in prefect UI:
 
 Access the prefect UI (`http://localhost:4200`), navigate to Deployments, and trigger a flow Run.
 
-6. **Access the services:**
+6. Access the services:
 
-    * **Prefect UI:** `http://localhost:4200` 
-    * **MLflow UI:** `http://localhost:5000` 
-    * **Grafana:** `http://localhost:3000` 
-    * **Adminer:** `http://localhost:8080` 
-    * **Fast API model serving:** `http://localhost:8000`
+    * Prefect UI: `http://localhost:4200` 
+    * MLflow UI: `http://localhost:5000` 
+    * Grafana: `http://localhost:3000` 
+    * Adminer: `http://localhost:8080` 
+    * Fast API model serving: `http://localhost:8000`
    
 7. **To stop the services:**
     ```bash
