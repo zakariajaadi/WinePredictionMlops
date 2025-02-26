@@ -12,10 +12,10 @@ The project spans everything from data extraction to model deployment, and monit
 * Horizontal Scaling
 
 ## 🚀 Demo video 
-
 Watch this brief demo video to see the complete process, from data preparation all the way through to model deployment and monitoring.
 
-<video src="https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af"></video>
+https://github.com/user-attachments/assets/c9bf8485-51b6-4fe6-8346-04702c296454
+
 
 ## 📦 Key Tools
 * **🐳 Docker & Docker Compose**: The entire project is containerized using Docker, and Docker Compose is used for managing multi-container setups. This includes services for **MLflow**, **Prefect**, **PostgreSQL**, and **Grafana**.  
