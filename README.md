@@ -3,7 +3,7 @@
 
 ## 📝 Description
 
-This **end-to-end** machine learning project aims to **industrialize** a model for predicting wine quality, showcasing practical **MLOps** best practices. It uses modern tools to manage, optimize, and deploy machine learning models, ensuring the pipeline is scalable, reliable, reproducible and easy to maintain. 
+This **end-to-end** machine learning project aims to **industrialize** a model for predicting wine quality, showcasing **MLOps** best practices. It leverages modern tools to manage, optimize, and deploy machine learning models, ensuring the pipeline is scalable, reliable, reproducible and easy to maintain. 
 
 The project spans everything from data extraction to model deployment, and monitoring and covers major aspects of MLOps, including :
 * Pipeline automation and orchestration.
@@ -13,7 +13,7 @@ The project spans everything from data extraction to model deployment, and monit
 
 ## 🚀 Demo video : 
 
-Watch this demo video to see the end-to-end process, from data preparation to model deployment and monitoring
+Watch the demo video to see the full process, from data preparation all the way through to model deployment and monitoring
 
 https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af
 
@@ -21,35 +21,35 @@ https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af
 ## 📦 Key Tools:  
 * **🐳 Docker & Docker Compose**: The entire project is containerized using Docker, and Docker Compose is used for managing multi-container setups. This includes services for **MLflow**, **Prefect**, **PostgreSQL**, and **Grafana**.  
 
-* **📊 MLflow**: Used to track training experiments for easy comparison and model selection, while also helping with versioning and managing models to streamline deployment.  
+* **📊 MLflow**: Used to track training experiments for easy comparison and model selection, and also to help version and manage models  to streamline deployment. 
 
 * **⛓️ Prefect**: Used to orchestrate the ML pipeline by managing tasks, scheduling, and monitoring. Two flows were implemented: one for model training and automatic deployment, and another for model monitoring.  
 
-* **🎯 Hyperopt**: Used to optimize hyperparameters by efficiently exploring only promising regions, which contributed to enhancing model performance.  
+* **🎯 Hyperopt**: Used to optimize hyperparameters by exploring exclusively promising regions, which contributed in enhancing model performance.  
 
 * **🧪 Deepchecks**: Used to detect both Features and Prediction drift, ensuring consistent model performance and early identification of potential issues.  
 
-* **📈 Grafana**: Used to visualize drift scores and to provide alerts for drift detection, offering real-time insights into deployed model health.  
+* **📈 Grafana**: Used to visualize drift scores and to provide alerts for drift detection, enabling real-time insights into deployed model health.  
 
 * **🚀 FastAPI**: Used to serve trained models and handle prediction requests in real-time.  
 
 * **⚙️ OmegaConf**: Used to manage configurations, enabling dynamic parameterization across different environments.  
 
-* **📦 Poetry**: Used to manage project dependencies and virtual environments, ensuring consistent and reproducible development.  
+* **📦 Poetry**: Used to manage project dependencies and virtual environments, for reproducible and consistent development.  
 
 * **🐘 PostgreSQL**: Housed both the MLflow backend database and the monitoring database.  
 
-* **🖥️ Adminer**: Adminer provided a lightweight interface for managing and monitoring the PostgreSQL database.  
+* **🖥️ Adminer**: Adminer provided a light-weight front-end to manage and monitor the PostgreSQL database.  
 
 ## ⏳ Dataset
 
-This project uses the **Red Wine Quality dataset from the UCI Machine Learning Repository** to predict the quality of red wine based on various chemical properties, such as alcohol content, acidity, and pH, helping winemakers assess and improve their product.
+This project uses the **Red Wine Quality dataset from the UCI Machine Learning Repository** to predict the quality of red wine based on various chemical properties, such as alcohol content, acidity, and pH, to assist winemakers in assessing and improving their product.
 
 - [Download Red Wine Quality Dataset (UCI)](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv)
 
 ## 🛠️ Installation
 
-To set up the project locally, ensure you have **Make, Docker and Docker Compose pre-installed**, then follow these steps:
+To set up the project locally, make sure you have **Make, Docker and Docker Compose pre-installed**, then proceed with the following steps:
 
 1. **Clone the repository:**
 
