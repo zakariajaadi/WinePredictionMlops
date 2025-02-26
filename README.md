@@ -1,45 +1,39 @@
-## Demo 
-
-https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af
-
 
 # Wine Quality Prediction
+## 🚀 Demo video : 
+
+https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af
 
 ## 📝 Description
 
 This is an **end-to-end Machine Learning project** focused on **Wine Quality Prediction**, demonstrating best practices in **MLOps**. The project leverages cutting-edge tools and frameworks to manage, optimize, and serve machine learning models while ensuring scalability, reliability, and maintainability. The pipeline spans from data preparation to model deployment, monitoring, and visualization.
 
-### Key Features:
+### Key Tools:
 
-1. **MLflow**: Used for model tracking, versioning, and experiment management. This allows us to log and compare different models, manage hyperparameter tuning, and track the entire lifecycle of machine learning experiments.
+1. **MLflow**: Tracked training experiments for easy comparison and model selection while versioning and managing models to streamline deployment.
 
-2. **Prefect**: Used for orchestration of the machine learning pipeline, enabling task management, scheduling, and monitoring of workflows. The pipeline is divided into different flows for training, deployment, and monitoring, ensuring smooth execution of ML operations.
+2. **Prefect**: Prefect orchestrated the ML pipeline, managing tasks, scheduling, and monitoring.  Two flows were implemented: one for training and automatic deployment, and another for model monitoring.
 
-3. **Hyperopt**: Integrated for hyperparameter optimization to find the best model configuration, maximizing the performance of machine learning algorithms.
+3. **Hyperopt**: Optimized hyperparameters by efficiently exploring only promising regions to enhance model performance.
 
-4. **OmegaConf**: Configurations are managed using OmegaConf, allowing dynamic parameterization and easy management of configurations for different environments (e.g., development, production).
+4. **Deepchecks**: Detected both feature and prediction drift, ensuring consistent model performance and early identification of potential issues.
 
-5. **FastAPI**: For serving the trained models in a high-performance, asynchronous web framework. FastAPI handles incoming prediction requests, loads the model, and returns the predictions in real-time.
+5. **Docker & Docker Compose**: The entire project is containerized using Docker, and Docker Compose is used for managing multi-container setups. This includes services for **MLflow**, **Prefect**, **PostgreSQL**, and **Grafana**.
 
-6. **Docker & Docker Compose**: The entire project is containerized using Docker, and Docker Compose is used for managing multi-container setups. This includes services for **MLflow**, **Prefect**, **PostgreSQL**, and **Grafana**, providing a reliable and consistent environment for development, testing, and production.
+6. **Grafana**: Visualized drift scores and provided alerts for drift detection, offering real-time insights into deployed model health.
 
-7. **Grafana**: Integrated for monitoring model performance and drift detection. The model’s performance metrics and drift scores are visualized on Grafana, providing real-time insights into the health of the deployed model.
+7. **FastAPI**: Served trained models and handled prediction requests in real-time.
 
-8. **PostgreSQL**: Used as the database for storing model metrics, logs, and other operational data. PostgreSQL ensures data persistence and scalability for large ML workloads.
+8. **OmegaConf**: OmegaConf managed configurations, enabling dynamic parameterization across different environments.
 
-9. **Adminer**: A lightweight database management tool for interacting with the PostgreSQL database, providing an easy-to-use interface for querying, managing, and monitoring the database.
+9. **Poetry** : Poetry managed project dependencies and virtual environments for consistent and reproducible development.
 
-10. **Deepchecks**: Used for model validation and drift detection, Deepchecks ensures that the deployed model's performance is consistently monitored and validated against real-world data. It helps track data drift, concept drift, and other model performance metrics.
 
-#### Architecture Overview:
+8. **PostgreSQL**: Housed both the MLflow backend database and the monitoring database.
 
-- **Data Preparation**: The pipeline begins with loading and preprocessing the wine quality dataset.
-- **Model Training**: The data is fed into a model training process that is orchestrated by Prefect. Hyperopt is used to optimize the model’s hyperparameters for better performance.
-- **Model Tracking**: During training, MLflow logs experiments, tracks model versions, and stores trained models for later deployment.
-- **Model Deployment**: The trained models are served using FastAPI in Docker containers, providing a REST API for making predictions.
-- **Monitoring**: Once deployed, the model’s predictions and performance are monitored using Grafana, which fetches metrics from the PostgreSQL database. Deepchecks continuously evaluates the model for data and concept drift.
-- **Database**: PostgreSQL stores model metrics, logs, and drift scores, while Adminer provides a user-friendly interface for database management.
+9. **Adminer**: Adminer provided a lightweight interface for managing and monitoring the PostgreSQL database.
+
 
 ## ⏳ Dataset
-the Red Wine Quality dataset from the UCI Machine Learning Repository 
+the Red Wine Quality dataset from the UCI Machine Learning Repository was used for model training and evaluation.
 - [Download Red Wine Quality Dataset (UCI)](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv)
