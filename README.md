@@ -13,7 +13,7 @@ The project spans everything from data extraction to model deployment, and monit
 
 ## 🚀 Demo video : 
 
-Watch the demo video to see the full process, from data preparation all the way through to model deployment and monitoring
+Watch this short, under one-minute demo video to see the complete process, from data preparation all the way through to model deployment and monitoring
 
 https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af
 
