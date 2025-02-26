@@ -47,6 +47,11 @@ This project uses the **Red Wine Quality dataset from the UCI Machine Learning R
 
 - [Download Red Wine Quality Dataset (UCI)](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv)
 
+## 🧙 Model 
+
+* The **Wine Quality Prediction Model** is built using **ElasticNet regression**, a linear regression technique that balances **L1 (Lasso) and L2 (Ridge) regularization**.
+* **Hyperopt** is used for hyperparameter tuning to find the best values of `alpha` : regularization strength and `l1_ratio`:  for balance between L1 and L2 penalties.
+
 ## 🛠️ Installation
 
 To set up the project locally, make sure you have **Make, Docker and Docker Compose pre-installed**, then proceed with the following steps:
