@@ -49,8 +49,8 @@ This project uses the **Red Wine Quality dataset from the UCI Machine Learning R
 
 ## 🧙 Model 
 
-* The **Wine Quality Prediction Model** is built using **ElasticNet regression**, a linear regression technique that balances **L1 (Lasso) and L2 (Ridge) regularization**.
-* **Hyperopt** is used for hyperparameter tuning to find the best values of `alpha` : regularization strength and `l1_ratio`:  for balance between L1 and L2 penalties.
+* The **Wine Quality Prediction Model** is built using **ElasticNet** regression, a linear regression technique that balances Lasso (L1) and Ridge (L2) regularization.
+* **Hyperopt** is used for hyperparameter tuning to find the best values for `alpha` : regularization strength and `l1_ratio`:  for balance between L1 and L2 penalties.
 
 ## 🛠️ Installation
 
