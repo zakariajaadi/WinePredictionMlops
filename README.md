@@ -5,13 +5,12 @@
 
 This **end-to-end** machine learning project aims to **industrialize** a model for predicting wine quality, showcasing practical **MLOps** best practices. It uses modern tools to manage, optimize, and deploy machine learning models, ensuring the pipeline is scalable, reliable, reproducible and easy to maintain. 
 
-The project covers major aspects of MLOps, including :
+The project spans everything from data extraction to model deployment, and monitoring and covers major aspects of MLOps, including :
 * Pipeline automation and orchestration.
 * Experiment tracking and model versioning.
 * Automated deployment and monitoring. 
 * Horizontal Scaling
 
-The project spans everything from data extraction to model deployment, and monitoring.
 ## 🚀 Demo video : 
 
 Watch this demo video to see the end-to-end process, from data preparation to model deployment and monitoring
@@ -73,12 +72,12 @@ To set up the project locally, ensure you have **Make, Docker and Docker Compose
    ```
 5. **Run flows in prefect UI:**
 
-Access the prefect UI, navigate to Deployments, and trigger a flow Run
+Access the prefect UI (`http://localhost:4200`), navigate to Deployments, and trigger a flow Run.
 
 6. **Access the services:**
 
-    * **Prefect:** `http://localhost:4200` 
-    * **MLflow:** `http://localhost:5000` 
+    * **Prefect UI:** `http://localhost:4200` 
+    * **MLflow UI:** `http://localhost:5000` 
     * **Grafana:** `http://localhost:3000` 
     * **Adminer:** `http://localhost:8080` 
     * **Fast API model serving:** `http://localhost:8000` 
