@@ -11,14 +11,14 @@ The project spans everything from data extraction to model deployment, and monit
 * Automated deployment and monitoring. 
 * Horizontal Scaling
 
-## 🚀 Demo video : 
+## 🚀 Demo video 
 
 Watch this brief demo video to see the complete process, from data preparation all the way through to model deployment and monitoring.
 
 https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af
 
 
-## 📦 Key Tools:  
+## 📦 Key Tools
 * **🐳 Docker & Docker Compose**: The entire project is containerized using Docker, and Docker Compose is used for managing multi-container setups. This includes services for **MLflow**, **Prefect**, **PostgreSQL**, and **Grafana**.  
 
 * **📊 MLflow**: Used to track training experiments for easy comparison and model selection, and also to help version and manage models  to streamline deployment. 
@@ -50,7 +50,7 @@ This project uses the **Red Wine Quality dataset from the UCI Machine Learning R
 ## 🧙 Model 
 
 * The **Wine Quality Prediction Model** is built using **ElasticNet** regression, a linear regression technique that balances Lasso (L1) and Ridge (L2) regularization.
-* **Hyperopt** is used for hyperparameter tuning to find the best values for `alpha` : regularization strength and `l1_ratio`:  for balance between L1 and L2 penalties.
+* **Hyperopt** is used for hyperparameter tuning to find the best values for `alpha` regularization strength and `l1_ratio` balance between L1 and L2 penalties.
 
 ## 🛠️ Installation
 
@@ -91,5 +91,9 @@ Access the prefect UI (`http://localhost:4200`), navigate to Deployments, and tr
     ```bash
     make compose-down #Stops the docker containers.
     ```
+## 📜 License
+This project is licensed under the MIT License.
 
-## You're all set! The application is now running. 🏃
+## 🚧 Future Improvements
+- Integrate CI/CD.
+- Migrate the project to Kubernetes for improved scalability.
