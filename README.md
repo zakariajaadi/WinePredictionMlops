@@ -15,8 +15,7 @@ The project spans everything from data extraction to model deployment, and monit
 
 Watch this brief demo video to see the complete process, from data preparation all the way through to model deployment and monitoring.
 
-https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af
-
+<video src="https://github.com/user-attachments/assets/ef070a30-5834-4573-a4ab-574c912e73af"></video>
 
 ## 📦 Key Tools
 * **🐳 Docker & Docker Compose**: The entire project is containerized using Docker, and Docker Compose is used for managing multi-container setups. This includes services for **MLflow**, **Prefect**, **PostgreSQL**, and **Grafana**.  
