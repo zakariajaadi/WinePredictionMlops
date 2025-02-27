@@ -2,6 +2,7 @@
 name = "winepredictionmlops"
 version = "0.1.0"
 description = "an end to end machine learning project for Red Wine Quality Prediciton with ElasticNet"
+license = { file = "LICENSE" }
 authors = [
     {name = "Zakaria Jaadi",email = "mr.zakaria.jaadi@gmail.com"}
 ]
