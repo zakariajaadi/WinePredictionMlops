@@ -3,7 +3,7 @@
 
 ## 📝 Description
 
-This **end-to-end** machine learning project aims to **industrialize** a model for predicting wine quality, showcasing **MLOps** best practices. It leverages modern tools to manage and deploy machine learning models, ensuring the pipeline is scalable, reliable, and reproductible.
+This **end-to-end** machine learning project goes beyond predicting wine quality—it aims to demonstrate **MLOps** best practices by industrializing a machine learning pipeline. Leveraging modern tools, the project streamlines the development, deployment, and monitoring of ML models, ensuring scalability, reliability, and reproducibility.
 
 The project spans everything from data extraction to model deployment, and monitoring and covers major aspects of MLOps, including :
 * Pipeline automation and orchestration.
