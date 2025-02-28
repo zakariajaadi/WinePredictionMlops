@@ -44,7 +44,7 @@ https://github.com/user-attachments/assets/c9bf8485-51b6-4fe6-8346-04702c296454
 
 ## 📊  Dataset
 
-This project uses the **Red Wine Quality dataset from the UCI Machine Learning Repository** to predict the quality of red wine based on various chemical properties, such as alcohol content, acidity, and pH, to assist winemakers in assessing and improving their product.
+This project uses the **Red Wine Quality dataset from the UCI Machine Learning Repository** to predict the quality of red wine based on various chemical properties, such as alcohol content, acidity, and pH.
 
 - [Download Red Wine Quality Dataset (UCI)](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv)
 
