@@ -98,4 +98,5 @@ This project is licensed under the MIT License.
 
 ## 🚧 Future Improvements
 - Integrate CI/CD.
+- Integrate data versioning with DVC
 - Migrate the project to Kubernetes for improved scalability.
