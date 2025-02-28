@@ -1,11 +1,10 @@
 
-# Wine Quality Prediction 🍷
-
+# Industrializing ML with MLOps: Wine Quality Pipeline 🍷
 ## 📝 Description
 
-This **end-to-end** machine learning project goes beyond predicting wine quality—it aims to demonstrate **MLOps** best practices by industrializing a machine learning pipeline. Leveraging modern tools, the project streamlines the development, deployment, and monitoring of ML models, ensuring scalability, reliability, and reproducibility.
+This **end-to-end** machine learning project serves as a practical guide for deploying ML models with MLOps principles. The **primary goal** is to demonstrate how to implement a robust, industrialized machine learning pipeline, rather than achieving state-of-the-art accuracy in wine quality prediction.
 
-The project spans everything from data extraction to model deployment, and monitoring and covers major aspects of MLOps, including :
+The project spans the entire ML lifecycle from data extraction to model deployment, and monitoring and covers major aspects of MLOps, including :
 * Pipeline automation and orchestration.
 * Experiment tracking and model versioning.
 * Automated deployment and monitoring. 
