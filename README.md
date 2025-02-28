@@ -61,7 +61,7 @@ To set up the project locally, make sure you have **Make**, **Docker** and **Doc
 1. Clone the repository:
 
    ```bash
-   git clone zakariajaadi/WinePredictionMlops
+   git clone https://github.com/zakariajaadi/WinePredictionMlops.git
    cd WinePredictionMlops
    ```
 2. Build flow image:
