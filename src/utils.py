@@ -15,12 +15,16 @@ from sqlalchemy.exc import SQLAlchemyError
 from config import read_config
 #from src.config import read_config
 
+# Get Logger
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 #------------- Train and Eval utils -------------#
 
 def evaluation_metrics(actual,pred):
+    """
+    Evaluation metrics for regression
+    """
     rmse = np.sqrt(mean_squared_error(actual, pred))
     mae = mean_absolute_error(actual, pred)
     r2 = r2_score(actual, pred)
@@ -84,7 +88,7 @@ def calculate_dataset_drift(reference_df,current_df):
 #------------- Model utils -------------#
 
 def make_prediction_from_model(samples_data_df: pd.DataFrame, model_uri: str):
-    """Makes a prediction using a trained model"""
+    """Makes a prediction using a trained model from mlflow"""
 
     # Load model and predict
     loaded_model = mlflow.sklearn.load_model(model_uri)

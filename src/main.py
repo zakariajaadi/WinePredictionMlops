@@ -1,13 +1,11 @@
 from pathlib import Path
 
-import joblib
 import mlflow
 import pandas as pd
 from dotenv import dotenv_values
 from prefect import flow
 from prefect.logging import get_run_logger
-
-
+from sqlalchemy import create_engine
 
 from config import read_config
 from data_extraction import extract_data
@@ -16,12 +14,13 @@ from db import prepare_pipeline_databases
 from model_deploy import get_best_run_model_version, promote_model_version_to_champion
 from model_monitoring import calculate_drift_metrics, save_drift_metrics_to_db, update_drift_processed_flags
 from model_train import set_mlflow_environment, train_hyperparameters_tuning
-from sqlalchemy import create_engine, Table, MetaData
 
 
 @flow(name="wine_quality_ml_pipeline")
 def ml_workflow():
-
+    """
+    Train and Automatic Deployment Prefect Flow.
+    """
     # Fetch config
     config = read_config()
 
@@ -48,8 +47,10 @@ def ml_workflow():
 
 @flow(name="wine_quality_monitoring_pipeline")
 def monitoring_workflow():
-
-    # Prefect logger
+    """
+    Monitoring Prefect Flow.
+    """
+    # Get Prefect logger
     logger=get_run_logger()
 
     # Fetch config

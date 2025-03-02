@@ -1,4 +1,3 @@
-
 volumes:
   postgres_data: {}
   prefect_data: {}
@@ -9,9 +8,7 @@ networks:
   back-tier: {}
 
 services:
-
-  # ------------- Prefect & Prefect Worker servers -------------#
-
+  # ------------- Prefect Worker server ------------- #
   prefect-worker:
     container_name: prefect-worker
     image: flow-image
@@ -31,6 +28,7 @@ services:
       prefect-server:
         condition: service_healthy
 
+  # ------------- Prefect server ------------- #
   prefect-server:
     container_name: prefect-server
     image: flow-image
@@ -53,9 +51,7 @@ services:
       retries: 3
       start_period: 10s
 
-  # ------------- Mlflow & Model Serving Servers-------------#
-
-
+  # ------------- Mlflow Server ------------- #
   mlflow-server:
     container_name: mlflow-server
     image: flow-image
@@ -86,6 +82,7 @@ services:
       timeout: 10s
       retries: 3
 
+  # ------------- Model Serving FastAPI Server ------------- #
   model-server:
     container_name: model-server
     image: flow-image
@@ -98,7 +95,7 @@ services:
        ENV_MODE: ${ENV_MODE}
        MLFLOW_TRACKING_URI : ${MLFLOW_TRACKING_URI}
        MLFLOW_DB_NAME: ${MLFLOW_DB_NAME}
-       MODEL_URI : models:/wine_quality_dev@champion # ${MODEL_URI}
+       MODEL_URI : models:/${MODEL_NAME}@champion # ${MODEL_URI}
        DB_HOST: ${DB_HOST}
        DB_PORT: ${DB_PORT}
        DB_USER: ${DB_USER}
@@ -121,7 +118,7 @@ services:
       mlflow-server:
         condition: service_healthy
 
-# ------------- Database server -------------#
+ # ------------- Postgres Database server ------------- #
   db-server:
     container_name: db-server
     image: postgres
@@ -145,19 +142,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-# ------------- Grafana & Adminer servers -------------#
-  adminer-server:
-    container_name: adminer-server
-    image: adminer
-    restart: always
-    profiles:
-      - app
-    ports:
-      - "8080:8080"
-    networks:
-      - back-tier
-      - front-tier  
-
+# ------------- Grafana Server ------------- #
   grafana-server:
     container_name: grafana-server
     profiles:
@@ -178,6 +163,17 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
-
     restart: always
 
+# ------------- Adminer Server -------------#
+  adminer-server:
+    container_name: adminer-server
+    image: adminer
+    restart: always
+    profiles:
+      - app
+    ports:
+      - "8080:8080"
+    networks:
+      - back-tier
+      - front-tier
