@@ -62,7 +62,7 @@ def simulate_production(conf:AppConfig,reference_df,simulation_df,batch_size):
 
 def main(batch_size:int =30):
 
-        os.environ["ENV_MODE"]="prod"
+        #os.environ["ENV_MODE"]="prod"
 
         # Fetch conf
         conf = read_config()

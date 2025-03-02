@@ -15,7 +15,7 @@ from model_deploy import get_best_run_model_version, promote_model_version_to_ch
 from model_monitoring import calculate_drift_metrics, save_drift_metrics_to_db, update_drift_processed_flags
 from model_train import set_mlflow_environment, train_hyperparameters_tuning
 
-
+# ----- App Flows ---- #
 @flow(name="wine_quality_ml_pipeline")
 def ml_workflow():
     """
@@ -101,6 +101,7 @@ def monitoring_workflow():
 
 
 if __name__ == "__main__":
+    # ----- Deploy & Schedule Flows ---- #
 
     # Get env dict from .env
     env_vars=dotenv_values()
@@ -136,7 +137,7 @@ if __name__ == "__main__":
             "volumes": [f"{mlruns_path}:/app/mlruns"],
             "env": env_vars
         },
-        cron="0 12 * * *", #every day 12pm
+        cron="0 12 * * *", # Every day 12pm
         build=False,
         push=False
     )
