@@ -13,15 +13,8 @@ from model_monitoring import calculate_drift_metrics, save_drift_metrics_to_db, 
 
 def simulate_production(conf:AppConfig,reference_df,simulation_df,batch_size):
     """
-     Simulate production-level data inference using a batch processing approach.
+     Simulate production-level data inference.
 
-    Args:
-        conf (AppConfig): configuration object
-        reference_df (pd.DataFrame): data model was trained on
-        simulation_df (pd.DataFrame) : simulated production data
-        batch_size (int): number of samples for each API call
-    Returns:
-        None
     """
 
     # Fetch conf
