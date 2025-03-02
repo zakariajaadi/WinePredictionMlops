@@ -55,6 +55,7 @@ def simulate_production(conf:AppConfig,reference_df,simulation_df,batch_size):
 
 def main(batch_size:int =30):
 
+        # ENV_MODE env var controls which model to use for simulation (Dev or Prod version)
         #os.environ["ENV_MODE"]="prod"
 
         # Fetch conf
